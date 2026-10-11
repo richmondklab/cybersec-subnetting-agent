@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberSec Subnetting Lab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Network & Cybersecurity Lab</p>
+          <h1>Subnetting Calculator</h1>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel calculator-panel">
+          <h2>Calculate subnet</h2>
+
+          <div class="field-group">
+            <label for="ipInput">IP address</label>
+            <input id="ipInput" type="text" value="192.168.10.0" placeholder="192.168.10.0" />
+          </div>
+
+          <div class="field-group">
+            <label for="cidrInput">CIDR</label>
+            <input id="cidrInput" type="number" value="26" min="0" max="32" />
+          </div>
+
+          <div class="field-group">
+            <label for="maskInput">Subnet mask</label>
+            <input id="maskInput" type="text" placeholder="255.255.255.192" />
+          </div>
+
+          <div class="button-row">
+            <button id="calculateBtn">Calculate</button>
+            <button id="generateExerciseBtn" class="secondary">Generate exercise</button>
+          </div>
+
+          <div id="resultBox" class="result-box hidden">
+            <h3>Subnet result</h3>
+            <div class="result-grid">
+              <div><span>Network</span><strong id="networkOutput"></strong></div>
+              <div><span>Broadcast</span><strong id="broadcastOutput"></strong></div>
+              <div><span>Mask</span><strong id="maskOutput"></strong></div>
+              <div><span>First host</span><strong id="firstHostOutput"></strong></div>
+              <div><span>Last host</span><strong id="lastHostOutput"></strong></div>
+              <div><span>Usable hosts</span><strong id="usableHostsOutput"></strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel exercise-panel">
+          <h2>Practice exercise</h2>
+
+          <div id="exerciseBox" class="exercise-box">
+            <p>No exercise generated yet.</p>
+          </div>
+
+          <div class="answer-form">
+            <div class="field-group">
+              <label for="networkAnswer">Network address</label>
+              <input id="networkAnswer" type="text" placeholder="192.168.10.0" />
+            </div>
+            <div class="field-group">
+              <label for="broadcastAnswer">Broadcast address</label>
+              <input id="broadcastAnswer" type="text" placeholder="192.168.10.63" />
+            </div>
+            <div class="field-group">
+              <label for="maskAnswer">Subnet mask</label>
+              <input id="maskAnswer" type="text" placeholder="255.255.255.192" />
+            </div>
+            <div class="field-group">
+              <label for="firstHostAnswer">First host</label>
+              <input id="firstHostAnswer" type="text" placeholder="192.168.10.1" />
+            </div>
+            <div class="field-group">
+              <label for="lastHostAnswer">Last host</label>
+              <input id="lastHostAnswer" type="text" placeholder="192.168.10.62" />
+            </div>
+            <div class="field-group">
+              <label for="usableHostsAnswer">Usable hosts</label>
+              <input id="usableHostsAnswer" type="number" placeholder="62" />
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="checkAnswerBtn">Check answer</button>
+            <button id="hintBtn" class="secondary">Get hint</button>
+            <button id="explainBtn" class="secondary">Explain concept</button>
+          </div>
+
+          <div id="feedbackBox" class="feedback-box hidden"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
